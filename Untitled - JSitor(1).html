@@ -1,0 +1,218 @@
+<!doctype html><html><head><style type="text/css">/* Reset some default styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Global Styles */
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+  background-color: #f4f4f4;
+}
+
+/* Header Styles */
+header {
+  background-color: #007bff;
+  color: #fff;
+  padding: 1rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.filter-input {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.user-options a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Main Content Styles */
+main {
+  padding: 2rem;
+}
+
+.provider-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 1.5rem;
+}
+
+.provider-card {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.provider-card:hover {
+  transform: translateY(-5px);
+}
+
+.provider-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.provider-card p {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Footer Styles */
+footer {
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+</style></head><body><!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Technically</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<header>
+		<nav>
+			<div class="logo">Technically</div>
+			<div class="search-bar">
+				<select id="service-filter" class="filter-input">
+          <option value="">Select Service</option>
+          <option value="electrician">Electrician</option>
+          <option value="plumber">Plumber</option>
+          <option value="mechanic">Mechanic</option>
+        </select>
+				<input type="number" id="distance-filter" class="filter-input" placeholder="Distance (km)">
+				<select id="rating-filter" class="filter-input">
+          <option value="">Select Rating</option>
+          <option value="4">4 stars and above</option>
+          <option value="3">3 stars and above</option>
+          <option value="2">2 stars and above</option>
+          <option value="1">1 star and above</option>
+        </select>
+				<input type="number" id="price-filter" class="filter-input" placeholder="Price (max)">
+				<button id="search-button" class="filter-input">Search</button>
+			</div>
+			<div class="user-options">
+				<a href="#">I Need a Service</a>
+				<a href="#">I Provide a Service</a>
+			</div>
+		</nav>
+	</header>
+
+	<main>
+		<section class="provider-list">
+			<h2>Available Providers</h2>
+			<div class="provider-container"></div>
+		</section>
+	</main>
+
+	<footer>
+		<p>&copy; 2023 Technically. All rights reserved.</p>
+	</footer>
+
+	<script src="script.js"></script>
+</body>
+
+</html><script type="text/javascript">const providers = [
+  { name: 'John Doe', price: 80, rating: 4, job: 'electrician', distance: 10 },
+  { name: 'Jane Smith', price: 90, rating: 4, job: 'electrician', distance: 150 },
+  { name: 'Bob Johnson', price: 75, rating: 3, job: 'electrician', distance: 80 },
+  { name: 'Emily Brown', price: 85, rating: 5, job: 'electrician', distance: 30 },
+  { name: 'Michael Davis', price: 70, rating: 4, job: 'electrician', distance: 200 },
+  { name: 'Sarah Wilson', price: 95, rating: 4, job: 'electrician', distance: 120 },
+  { name: 'David Lee', price: 80, rating: 3, job: 'electrician', distance: 50 },
+  { name: 'Jennifer Martinez', price: 90, rating: 4, job: 'plumber', distance: 100 },
+  { name: 'William Hernandez', price: 75, rating: 3, job: 'plumber', distance: 170 },
+  { name: 'Sophia Diaz', price: 85, rating: 5, job: 'plumber', distance: 40 },
+  { name: 'Daniel Morales', price: 70, rating: 4, job: 'plumber', distance: 180 },
+  { name: 'Olivia Gutierrez', price: 95, rating: 4, job: 'plumber', distance: 130 },
+  { name: 'Alexander Ramirez', price: 80, rating: 3, job: 'plumber', distance: 60 },
+  { name: 'Isabella Sanchez', price: 90, rating: 4, job: 'mechanic', distance: 90 },
+  { name: 'Gabriel Torres', price: 75, rating: 3, job: 'mechanic', distance: 220 },
+  { name: 'Mia Flores', price: 85, rating: 5, job: 'mechanic', distance: 70 },
+  { name: 'Lucas Reyes', price: 70, rating: 4, job: 'mechanic', distance: 160 },
+  { name: 'Ava Gomez', price: 95, rating: 4, job: 'mechanic', distance: 110 },
+  { name: 'Sebastian Mendoza', price: 80, rating: 3, job: 'mechanic', distance: 190 },
+  { name: 'Camila Jimenez', price: 90, rating: 4, job: 'mechanic', distance: 140 }
+];
+
+const providerContainer = document.querySelector('.provider-container');
+
+function renderProviders(filteredProviders) {
+  providerContainer.innerHTML = '';
+
+  if (filteredProviders.length === 0) {
+    providerContainer.innerHTML = '<p>No providers are available that fit your filters.</p>';
+    return;
+  }
+
+  filteredProviders.forEach(provider => {
+    const providerCard = document.createElement('div');
+    providerCard.classList.add('provider-card');
+    providerCard.innerHTML = `
+      <h3>${provider.name}</h3>
+      <p>${provider.job}</p>
+      <p>Location: ${provider.distance} km</p>
+      <p>Rating: ${provider.rating}/5</p>
+      <p>Price: $${provider.price}</p>
+    `;
+    providerContainer.appendChild(providerCard);
+  });
+}
+
+function filterAndSortProviders() {
+  const serviceFilter = document.getElementById('service-filter').value;
+  const distanceFilter = parseInt(document.getElementById('distance-filter').value) || Infinity;
+  const ratingFilter = parseInt(document.getElementById('rating-filter').value) || 0;
+  const priceFilter = parseInt(document.getElementById('price-filter').value) || Infinity;
+
+  const filteredProviders = providers.filter(provider => {
+    const serviceMatch = serviceFilter ? provider.job === serviceFilter : true;
+    const distanceMatch = provider.distance <= distanceFilter;
+    const ratingMatch = provider.rating >= ratingFilter;
+    const priceMatch = provider.price <= priceFilter;
+
+    return serviceMatch && distanceMatch && ratingMatch && priceMatch;
+  });
+
+  renderProviders(filteredProviders);
+}
+
+const searchButton = document.getElementById('search-button');
+searchButton.addEventListener('click', filterAndSortProviders);
+
+// Initial render
+renderProviders(providers);
+</script></body><html>
